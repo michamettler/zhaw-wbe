@@ -18,3 +18,4 @@ const scriptsInString = (text) => {
 }
 
 module.exports = { scriptOfSample }
+module.exports = { scriptsInString }
