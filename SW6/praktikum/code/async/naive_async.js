@@ -1,16 +1,23 @@
-//
-//  Naive asynchronous code. This doesn’t work!
-//
-let fs = require('fs')
+const fs = require('fs')
+
 let timestamp = new Date().toString()
 let contents
 
-fs.writeFile('date.txt', timestamp, () => {})
-
-fs.readFile('date.txt', (err, data) => { 
-	if (err) throw err
-	contents = data
+let promise = new Promise((resolve, reject) => {
+  fs.writeFile('date.txt', timestamp, (err) => {
+    if (err) reject(err)
+    else resolve()
+  })
 })
 
-console.log('Comparing the contents')
-console.assert(timestamp == contents)
+promise
+  .then(() => {
+    fs.readFile('date.txt', (err, data) => {
+      contents = data.toString()
+      console.log('Comparing the contents')
+      console.assert(timestamp === contents)
+    })
+  })
+  .catch((err) => {
+    console.error(err)
+  })
