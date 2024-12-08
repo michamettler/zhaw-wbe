@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Nested elements
+//  - MyButton component in children of MySection
+//  - Text in children of MyButton
+//
+    
+// JSX
+/*
+const MySection = ({children}) => (
+  <section>
+    <h2>My Section</h2>
+    {children}
+  </section>  
+)
+
+const MyButton = ({children}) => (
+  <button>{children}</button>
+)
+
+const element = (
+  <MySection><MyButton>My Button Text</MyButton></MySection>
+)
+*/
+
+// JSX CONVERTED
+// don't forget to import createElement
+/*
+const MySection = ({children}) => createElement("section", null, 
+  createElement("h2", null, "My Section"), children)
+
+const MyButton = ({children}) => createElement("button", null, children);
+
+const element = createElement(MySection, null, 
+  createElement(MyButton, null, "My Button Text"))
+*/
+    
+
+import { render, useSJDON } from "./lib/suiweb-1.1.js"
+
+
+const MySection = ({children}) =>
+  ["section", ["h2", "My Section"], ...children]
+
+const MyButton = (props) =>
+  ["button", ...props.children]
+
+const element =
+  [MySection, [MyButton, "My Button Text"]]
+
+
+useSJDON(MyButton, MySection)
+
+const container = document.getElementById("root")
+render(element, container)
+    
+  </script>
+</body>
+</html>
