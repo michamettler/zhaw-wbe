@@ -12,7 +12,11 @@
 </head>
 
 <body>
-  <button id="reset">Neues Spiel</button>
+  <div class="controls">
+    <button onclick="reset()">Neues Spiel</button>
+    <button onclick="loadState()">Load</button>
+    <button onclick="saveState()">Save</button>
+  </div>
   <div id="board" class="board"></div>
 
   <script>

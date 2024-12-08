@@ -1,3 +1,5 @@
+const SERVICE = 'http://localhost:3000/api/data/c4state?api-key=c4game'
+
 let state = {
   board: Array(6)
     .fill('')
@@ -6,10 +8,7 @@ let state = {
 }
 
 function initialize() {
-    const resetButton = document.getElementById('reset')
-    resetButton.addEventListener('click', reset)
-    
-    showBoard()
+  showBoard()
 }
 
 function reset() {
@@ -58,4 +57,22 @@ function handleFieldClick(column) {
       return
     }
   }
+}
+
+function loadState() {
+  fetch(SERVICE)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      state = data
+      showBoard()
+    })
+}
+
+function saveState() {
+  fetch(SERVICE, {
+    method: 'PUT',
+    headers: { 'Content-type': 'application/json' },
+    body: JSON.stringify(state),
+  })
 }
