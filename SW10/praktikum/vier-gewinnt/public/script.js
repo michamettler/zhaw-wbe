@@ -64,7 +64,6 @@ function handleFieldClick(column) {
 }
 
 function loadState() {
-  // TODO
   fetch(SERVICE)
     .then((response) => response.json())
     .then((data) => {
@@ -75,7 +74,6 @@ function loadState() {
 }
 
 function saveState() {
-  // TODO
   fetch(SERVICE, {
     method: 'PUT',
     headers: { 'Content-type': 'application/json' },
