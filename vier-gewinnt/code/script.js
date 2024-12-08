@@ -2,6 +2,22 @@ let state = {
   board: Array(6)
     .fill('')
     .map(() => Array(7).fill('')),
+  currentPlayer: 'r',
+}
+
+function initialize() {
+    const resetButton = document.getElementById('reset')
+    resetButton.addEventListener('click', reset)
+    
+    showBoard()
+}
+
+function reset() {
+  state.board = Array(6)
+    .fill('')
+    .map(() => Array(7).fill(''))
+  state.currentPlayer = 'r'
+  showBoard()
 }
 
 function showBoard() {
@@ -22,6 +38,10 @@ function showBoard() {
         fieldEl.appendChild(bluePiece)
       }
 
+      fieldEl.addEventListener('click', () => {
+        handleFieldClick(j)
+      })
+
       rowEl.appendChild(fieldEl)
     })
 
@@ -29,15 +49,13 @@ function showBoard() {
   })
 }
 
-function randomUpdate() {
-  const row = Math.floor(Math.random() * 6)
-  const col = Math.floor(Math.random() * 7)
-  const actions = ['', 'r', 'b']
-  const randomAction = actions[Math.floor(Math.random() * actions.length)]
-
-  state.board[row][col] = randomAction
-
-  showBoard()
+function handleFieldClick(column) {
+  for (let row = state.board.length - 1; row >= 0; row--) {
+    if (state.board[row][column] === '') {
+      state.board[row][column] = state.currentPlayer
+      state.currentPlayer = state.currentPlayer === 'r' ? 'b' : 'r'
+      showBoard()
+      return
+    }
+  }
 }
-
-setInterval(randomUpdate, 1000)
