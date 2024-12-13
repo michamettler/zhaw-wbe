@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  Liste aufbauen
+//
+
+import { render, useState, useSJDON } from "./lib/suiweb-1.1.js"
+
+const App = () => {
+  
+  let [text, setText] = useState("")
+  let [items, setItems] = useState([])
+
+  return (
+    ["div",
+      ["p", "Da fehlt noch einiges"],
+    ] )
+}
+
+useSJDON(App)
+
+const element = [App]
+
+const container = document.getElementById("root")
+render(element, container)
+
+    
+  </script>
+</body>
+</html>

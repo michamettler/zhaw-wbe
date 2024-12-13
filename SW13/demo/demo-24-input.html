@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#000000">
+  <title>Demo App</title>
+</head>
+
+<body>
+  <noscript>
+    You need to enable JavaScript to run this app.
+  </noscript>
+  <div id="root"></div>
+  
+  <script type="module">
+
+//
+//  JavaScript Part
+//
+//  Controlled input elements
+//  - re-render every time input is changed
+//  - focus and cursor position are restored
+//  BUG: 
+//  - cursor position works in textarea but not in input field
+//
+
+import { render, useState, useSJDON } from "./lib/suiweb-1.1.js"
+
+const App = ({init}) => {
+  
+  let [text, setText] = useState(init)
+  let [otherText, setOtherText] = useState("")
+  
+  const updateValue = e => {
+    setText(e.target.value);
+  }
+
+  // only digits and one decimal point allowed:
+  //
+//const updateValue = e => {
+//  const inp = e.target.value
+//  const reg = /^\d+\.?\d*$/
+//  if (reg.test(inp)) setText(inp)
+//  else setText(text)
+//}
+
+  const updateOtherValue = e => {
+    setOtherText(e.target.value)
+  }
+  
+  return (
+    ["div", {style: "background: lightblue"},
+      ["h1", "Controlled Input Elements"],
+      ["input", {oninput: updateValue, value: text}],
+      ["p", "Your input: ", text ],
+      ["textarea", {oninput: updateOtherValue}, otherText],
+      ["p", "Your input: ", otherText ] ] 
+  )
+}
+
+useSJDON(App)
+
+const element = [App, {init: "Name"}]
+//const element = [App, {init: ""}]
+
+const container = document.getElementById("root")
+render(element, container);
+
+    
+  </script>
+</body>
+</html>
