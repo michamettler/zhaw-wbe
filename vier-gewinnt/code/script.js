@@ -1,4 +1,4 @@
-const SERVICE = 'http://localhost:3000/api/data/c4state?api-key=c4game'
+//const SERVICE = 'http://localhost:3000/api/data/c4state?api-key=c4game'
 
 let state = {
   board: Array(6)
@@ -8,7 +8,7 @@ let state = {
 }
 
 function initialize() {
-  showBoard()
+  render()
 }
 
 function reset() {
@@ -16,10 +16,10 @@ function reset() {
     .fill('')
     .map(() => Array(7).fill(''))
   state.currentPlayer = 'r'
-  showBoard()
+  render()
 }
 
-function showBoard() {
+function render() {
   const boardEl = document.getElementById('board')
   boardEl.innerHTML = ''
 
@@ -54,7 +54,7 @@ function handleFieldClick(column) {
     if (state.board[row][column] === '') {
       state.board[row][column] = state.currentPlayer
       state.currentPlayer = state.currentPlayer === 'r' ? 'b' : 'r'
-      showBoard()
+      render()
       if (connect4Winner(prev, state.board)) {
         alert(`Congratulations player ${prev}, you won! :)`)
       }
@@ -64,21 +64,10 @@ function handleFieldClick(column) {
 }
 
 function loadState() {
-  // TODO
-  fetch(SERVICE)
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data)
-      state = data
-      showBoard()
-    })
+  state = JSON.parse(localStorage.getItem('state'))
+  render()
 }
 
 function saveState() {
-  // TODO
-  fetch(SERVICE, {
-    method: 'PUT',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify(state),
-  })
+  localStorage.setItem('state', JSON.stringify(state))
 }

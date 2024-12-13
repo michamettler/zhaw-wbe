@@ -55,5 +55,3 @@ function isRangeValid(board, x, y, xDir, yDir) {
 
   return true
 }
-
-module.exports = { connect4Winner }
