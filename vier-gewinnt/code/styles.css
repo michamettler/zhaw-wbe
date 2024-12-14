@@ -3,7 +3,7 @@ div {
 }
 
 .board {
-  width: 84vw;
+  width: 56vw;
   margin: auto;
   outline: 1px solid black;
 }
@@ -15,9 +15,9 @@ div {
 
 .board .field {
   border: 1px solid black;
-  width: 12vw;
+  width: 8vw;
   /* Manages Viewpoint Display */
-  height: 12vw;
+  height: 8vw;
   /*display: none;*/
 }
 
@@ -26,8 +26,8 @@ div {
 }
 
 .board .field .piece {
-  width: 10vw;
-  height: 10vw;
+  width: 6vw;
+  height: 6vw;
   border-radius: 50%;
   margin: 1vw;
 }
