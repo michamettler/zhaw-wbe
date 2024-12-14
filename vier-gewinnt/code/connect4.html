@@ -17,8 +17,17 @@
     <button onclick="reset()">Neues Spiel</button>
     <button onclick="loadState()">Load</button>
     <button onclick="saveState()">Save</button>
+    <button onclick="undo()">Undo</button>
   </div>
+
   <div id="board" class="board"></div>
+
+  <div id="winnerModal" class="modal">
+    <div class="modal-content">
+      <h2 id="winnerMessage"></h2>
+      <button onclick="closeModal()">OK</button>
+    </div>
+  </div>
 
   <script>
     initialize() 
