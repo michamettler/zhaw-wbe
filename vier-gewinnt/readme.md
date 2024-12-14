@@ -18,3 +18,12 @@ Die Frontend-Bibliothek SuiWeb (https://github.com/suiweb/suiweb?tab=readme-ov-f
 
 ### Screenshots
 Im Folgenden sind Screenshots enthalten, die die Benutzeroberfläche und die wichtigsten Funktionen des Projekts zeigen:
+
+#### Spielstart
+![Screenshot des Spiels](misc/screenshot-start.png)
+
+#### Während des Spiels
+![Screenshot des Spiels](misc/screenshot-playing.png)
+
+#### Spielende
+![Screenshot des Spiels](misc/screenshot-end.png)
