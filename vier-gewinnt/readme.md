@@ -12,12 +12,10 @@ Der folgende Funktionsumfang ist enthalten:
 - Spielfeld löschen
 
 ### Technische Anmerkung
-Anmerkung zur technischen Implementierung:
-
 Die Frontend-Bibliothek SuiWeb (https://github.com/suiweb/suiweb?tab=readme-ov-file) wurde nicht eingebunden, da die Umstellung auf `type="module"` zu CORS-Fehlern führte.</br> Um das Projekt problemlos auf GitHub Pages bereitstellen zu können, wurde somit darauf verzichtet.
 
 ### Screenshots
-Im Folgenden sind Screenshots enthalten, die die Benutzeroberfläche und die wichtigsten Funktionen des Projekts zeigen:
+Im Folgenden sind Screenshots enthalten, welche die Benutzeroberfläche und die wichtigsten Funktionen des Projekts zeigen:
 
 #### Spielstart
 ![Screenshot des Spiels](misc/screenshot-start.png)
